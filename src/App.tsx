@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
-import { AppBar, Tabs, Tab, Box, Button, Toolbar, Typography, CssBaseline, Grid, Paper, Icon } from '@mui/material';
+import { AppBar, Tabs, Tab, Box, Button, Toolbar, Typography, CssBaseline, Grid, Paper } from '@mui/material';
 import { topics } from './consts';
 import { ColorPickerField } from './components/color-picker';
 
@@ -21,7 +21,7 @@ const App: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({});
   const [output, setOutput] = useState<string>('');
 
-  const handleTabChange = (event: React.SyntheticEvent, newIndex: number) => {
+  const handleTabChange = (_event: React.SyntheticEvent, newIndex: number) => {
     setTabIndex(newIndex);
   };
 
@@ -41,6 +41,8 @@ const App: React.FC = () => {
   const handleSubmit = () => {
     const jsonOutput = JSON.stringify(formData, null, 2);
     setOutput(jsonOutput);
+
+    console.log(output);
 
     // Copy to clipboard
     navigator.clipboard.writeText(jsonOutput).then(() => {
